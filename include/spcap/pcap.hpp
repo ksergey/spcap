@@ -27,7 +27,7 @@ static constexpr const std::uint32_t tcpdump_magic = 0xa1b2c3d4;
 /* Tcpdump PCAP magic number, nanosecond timestamp precision */
 static constexpr const std::uint32_t ns_tcpdump_magic = 0xa1b23c4d;
 /* Maximum packet size */
-static constexpr const std::uint32_t max_snaplen = 65535;
+static constexpr const std::uint32_t max_snaplen = 65536 * 4;
 
 /* PCAP Packet Header */
 struct pcap_header {

@@ -111,11 +111,12 @@ private:
 
         if (header.network != DLT_EN10MB) {
             throw std::runtime_error("Network "s + std::to_string(header.network)
-                    + " not supported (only Ethernet supported)");
+                    + " not supported (only Ethernet supported)"s);
         }
 
         if (header.snaplen > max_snaplen) {
-            throw std::runtime_error("Invalid file capture length");
+            throw std::runtime_error("Invalid file capture length ("s
+                    + std::to_string(header.snaplen) + ")"s);
         }
 
         /* Initialize buffer */
