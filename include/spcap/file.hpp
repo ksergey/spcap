@@ -27,6 +27,8 @@ private:
     input_file input_;
     /* Timestamp precision flag */
     bool upscale_precision_{false};
+    /* Timestamp correction */
+    std::uint64_t timestamp_correction_{0};
     /* Buffer for new packets */
     std::vector< char > buffer_;
 
@@ -77,7 +79,7 @@ public:
         }
 
         /* Calculate packet timestamp */
-        std::uint64_t timestamp = header.ts_sec * nsecs_in_sec;
+        std::uint64_t timestamp = header.ts_sec * nsecs_in_sec + timestamp_correction_;
         if (__unlikely(upscale_precision_)) {
             timestamp += header.ts_usec * nsecs_in_usec;
         } else {
@@ -118,6 +120,8 @@ private:
 
         /* Initialize buffer */
         buffer_.resize(header.snaplen);
+
+        timestamp_correction_ = header.thiszone * nsecs_in_sec;
     }
 };
 
