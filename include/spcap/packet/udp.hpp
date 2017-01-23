@@ -92,6 +92,10 @@ public:
     std::uint16_t dst_port() const noexcept
     { return ntohs(udp_->dest); }
 
+    /* Return UDP packet capturing time */
+    std::uint64_t timestamp() const noexcept
+    { return timestamp_; }
+
     /* Return UDP packet payload */
     const char* payload() const noexcept
     { return payload_; }

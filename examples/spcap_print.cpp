@@ -38,8 +38,10 @@ int main(int argc, char* argv[])
             good_packets_count++;
 
             using spcap::address_v4;
+            using spcap::timestamp;
 
             std::cout
+                << timestamp{udp.timestamp()} << ' '
                 << address_v4{udp.src_ip()} << ':' << udp.src_port() << " -> "
                 << address_v4{udp.dst_ip()} << ':' << udp.dst_port() << ' '
                 << udp.payload_size() << '\n';

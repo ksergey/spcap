@@ -7,6 +7,7 @@
 
 #include "file.hpp"
 #include "address_v4.hpp"
+#include "timestamp.hpp"
 #include "packet/udp.hpp"
 
 #endif /* KSERGEY_spcap_230117103008 */

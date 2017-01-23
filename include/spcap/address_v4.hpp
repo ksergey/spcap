@@ -10,7 +10,7 @@
 
 namespace spcap {
 
-class address_v4
+class address_v4 final
 {
 private:
     std::uint32_t addr_{0};
