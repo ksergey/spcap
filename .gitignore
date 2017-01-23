@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+# Personal build directories
+b
+build
