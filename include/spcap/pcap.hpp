@@ -6,7 +6,6 @@
 #define KSERGEY_pcap_230117111144
 
 #include <cstdint>
-#include <net/bpf.h>
 #include "compiler.hpp"
 
 namespace spcap {
@@ -28,6 +27,8 @@ static constexpr const std::uint32_t tcpdump_magic = 0xa1b2c3d4;
 static constexpr const std::uint32_t ns_tcpdump_magic = 0xa1b23c4d;
 /* Maximum packet size */
 static constexpr const std::uint32_t max_snaplen = 65536 * 4;
+/* Ethernet data link type */
+static constexpr const std::uint32_t network_ethernet = 1;
 
 /* PCAP Packet Header */
 struct pcap_header {

@@ -109,7 +109,7 @@ private:
             throw std::runtime_error("Unknown PCAP type in file "s + path_);
         }
 
-        if (header.network != DLT_EN10MB) {
+        if (header.network != network_ethernet) {
             throw std::runtime_error("Network "s + std::to_string(header.network)
                     + " not supported (only Ethernet supported)"s);
         }
