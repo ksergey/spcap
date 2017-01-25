@@ -14,7 +14,7 @@ const std::uint32_t flags = LZMA_TELL_UNSUPPORTED_CHECK | LZMA_CONCATENATED;
 const std::uint64_t memory_limit = std::numeric_limits< std::uint64_t >::max();
 } /* namespace */
 
-xz_decompress_streambuffer::xz_decompress_streambuffer(std::basic_istream< char >& istr)
+inline xz_decompress_streambuffer::xz_decompress_streambuffer(std::basic_istream< char >& istr)
     : input_stream_(istr)
 {
     /* Initialise the stream */
@@ -33,13 +33,13 @@ xz_decompress_streambuffer::xz_decompress_streambuffer(std::basic_istream< char 
     setg(out_buffer_, out_buffer_, out_buffer_ + 0);
 }
 
-xz_decompress_streambuffer::~xz_decompress_streambuffer()
+inline xz_decompress_streambuffer::~xz_decompress_streambuffer()
 {
     /* Clear the compressor */
     lzma_end(&xz_stream_);
 }
 
-xz_decompress_streambuffer::int_type xz_decompress_streambuffer::underflow()
+inline xz_decompress_streambuffer::int_type xz_decompress_streambuffer::underflow()
 {
     /* If everything has been decompressed already, it must be the end of the stream */
     if (output_done_) {
