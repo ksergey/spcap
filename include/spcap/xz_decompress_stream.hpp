@@ -44,7 +44,7 @@ private:
 public:
     /* Creates a streambuffer that reads compressed data from the given stream */
     explicit xz_decompress_streambuffer(std::basic_istream< char >& istr);
-    /* Cleans the lzma compressor and zeroes the buffers */
+    /* Cleans the lzma compressor */
     virtual ~xz_decompress_streambuffer();
 
 protected:

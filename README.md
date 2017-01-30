@@ -2,7 +2,7 @@
 C++ PCAP parsing library
 
 # Features
-- Parsing PCAPs from xz-encoded files directly
+- Parsing PCAPs from xz/gz-encoded files directly
 - Nanoseconds timestamp precision
 - Header-only
 
@@ -13,4 +13,5 @@ C++ PCAP parsing library
 
 # Dependencies
 - liblzma - decoding xz-archives
+- zlib - decoding gz-archives
 - cmake - build system

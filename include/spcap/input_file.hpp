@@ -9,6 +9,7 @@
 #include <string>
 #include <type_traits>
 #include "xz_decompress_stream.hpp"
+#include "gz_decompress_stream.hpp"
 #include "utils.hpp"
 #include "compiler.hpp"
 
@@ -35,6 +36,8 @@ public:
 
         if (ends_with(filename, ".xz")) {
             decoded_stream_ = new xz_decompress_stream(raw_stream_);
+        } else if (ends_with(filename, ".gz")) {
+            decoded_stream_ = new gz_decompress_stream(raw_stream_);
         } else {
             decoded_stream_ = &raw_stream_;
         }

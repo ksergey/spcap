@@ -15,7 +15,7 @@ const std::uint64_t memory_limit = std::numeric_limits< std::uint64_t >::max();
 } /* namespace */
 
 inline xz_decompress_streambuffer::xz_decompress_streambuffer(std::basic_istream< char >& istr)
-    : input_stream_(istr)
+    : input_stream_{istr}
 {
     /* Initialise the stream */
     lzma_stream xz_stream_init = LZMA_STREAM_INIT;
