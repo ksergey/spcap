@@ -43,8 +43,12 @@ public:
         /* Read ethernet header */
         const struct ether_header* ether = reinterpret_cast< const struct ether_header* >(p.data() + offset);
 
-        if (__unlikely(ntohs(ether->ether_type) != ETHERTYPE_IP)) {
-            return ;
+        if (ntohs(ether->ether_type) != ETHERTYPE_IP) {
+            if (ntohs(ether->ether_type) != ETHERTYPE_VLAN) {
+                return ;
+            }
+            /* Skip wlan header */
+            offset += 4;
         }
         offset += sizeof(struct ether_header);
 

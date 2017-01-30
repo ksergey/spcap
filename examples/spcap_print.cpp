@@ -26,12 +26,12 @@ int main(int argc, char* argv[])
 
             spcap::packet::udp udp{packet};
             if (__unlikely(!udp)) {
-                bad_packets_count--;
+                bad_packets_count++;
                 continue;
             }
 
             if (__unlikely(packet.size() != packet.original_size())) {
-                bad_packets_count--;
+                bad_packets_count++;
                 continue;
             }
 
