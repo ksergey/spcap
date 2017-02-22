@@ -24,7 +24,7 @@ inline xz_decompress_streambuffer::xz_decompress_streambuffer(std::basic_istream
     /* Create the compressor */
     xz_result_ = lzma_stream_decoder(&xz_stream_, memory_limit, flags);
     if (xz_result_ != LZMA_OK) {
-        throw std::runtime_error("failed to initialize xz-decoder");
+        throw std::runtime_error("Failed to initialize xz-decoder");
     }
 
     /* Set buffer pointers */

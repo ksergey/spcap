@@ -31,7 +31,7 @@ public:
     {
         raw_stream_.open(filename.c_str(), std::ios::in | std::ios::binary);
         if (!raw_stream_) {
-            throw std::runtime_error("failed to open file \"" + filename + '"');
+            throw std::runtime_error("Failed to open file \"" + filename + '"');
         }
 
         if (ends_with(filename, ".xz")) {
