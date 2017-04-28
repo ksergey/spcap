@@ -15,4 +15,7 @@ target_link_libraries(moex_print spcap)
 add_executable(xcat xcat.cpp)
 target_link_libraries(xcat spcap)
 
+add_executable(bug_test bug_test.cpp)
+target_link_libraries(bug_test spcap)
+
 file(COPY plain.text plain.text.gz plain.text.xz DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
