@@ -6,7 +6,6 @@
 #define KSERGEY_pcap_230117111144
 
 #include <cstdint>
-#include "compiler.hpp"
 
 namespace spcap {
 

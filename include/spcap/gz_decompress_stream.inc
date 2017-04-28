@@ -71,7 +71,7 @@ inline std::size_t gz_decompress_streambuffer::unzip_from_stream(char* buf, std:
     if (err_ == Z_STREAM_END) {
         if (z_stream_.avail_in) {
             input_stream_.clear(std::ios::goodbit);
-            input_stream_.seekg(-z_stream_.avail_in, std::ios_base::cur);
+            input_stream_.seekg(-off_type(z_stream_.avail_in), std::ios_base::cur);
             z_stream_.avail_in = 0;
         }
     }

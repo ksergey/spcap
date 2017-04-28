@@ -20,17 +20,17 @@ int main(int argc, char* argv[])
         std::size_t bad_packets_count{0};
         while (true) {
             auto packet = file.next();
-            if (__unlikely(!packet)) {
+            if (!packet) {
                 break;
             }
 
             spcap::packet::udp udp{packet};
-            if (__unlikely(!udp)) {
+            if (!udp) {
                 bad_packets_count++;
                 continue;
             }
 
-            if (__unlikely(packet.size() != packet.original_size())) {
+            if (packet.size() != packet.original_size()) {
                 bad_packets_count++;
                 continue;
             }

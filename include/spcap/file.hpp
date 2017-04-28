@@ -9,7 +9,6 @@
 #include "pcap.hpp"
 #include "input_file.hpp"
 #include "raw_packet.hpp"
-#include "compiler.hpp"
 
 namespace spcap {
 
@@ -36,9 +35,7 @@ public:
     explicit file(const std::string& path)
         : path_(path)
         , input_(path)
-    {
-        read_header();
-    }
+    { read_header(); }
 
     /* Return file path */
     const std::string& path() const
@@ -59,28 +56,28 @@ public:
 
         pcap_header header;
         std::size_t count = input_.read(&header, sizeof(header));
-        if (__unlikely(count != sizeof(header))) {
-            if (__unlikely(count > 0)) {
+        if (count != sizeof(header)) {
+            if (count > 0) {
                 throw std::runtime_error("Read "s + std::to_string(count) + " of "s
                         + std::to_string(sizeof(header)) + " bytes of PCAP header");
             }
             return raw_packet{};
         }
 
-        if (__unlikely(header.incl_len > buffer_.size())) {
+        if (header.incl_len > buffer_.size()) {
             throw std::runtime_error("Not enought buffer size for reading packet");
         }
 
         /* Read packet data */
         count = input_.read(buffer_.data(), header.incl_len);
-        if (__unlikely(count != header.incl_len)) {
+        if (count != header.incl_len) {
             throw std::runtime_error("Read "s + std::to_string(count) + " of "s
                     + std::to_string(header.incl_len) + " bytes of PCAP packet");
         }
 
         /* Calculate packet timestamp */
         std::uint64_t timestamp = header.ts_sec * nsecs_in_sec + timestamp_correction_;
-        if (__unlikely(upscale_precision_)) {
+        if (upscale_precision_) {
             timestamp += header.ts_usec * nsecs_in_usec;
         } else {
             timestamp += header.ts_usec;

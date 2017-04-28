@@ -11,7 +11,6 @@
 #include "xz_decompress_stream.hpp"
 #include "gz_decompress_stream.hpp"
 #include "utils.hpp"
-#include "compiler.hpp"
 
 namespace spcap {
 

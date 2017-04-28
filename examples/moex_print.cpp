@@ -28,23 +28,23 @@ int main(int argc, char* argv[])
 
         while (true) {
             auto packet = file.next();
-            if (__unlikely(!packet)) {
+            if (!packet) {
                 break;
             }
 
             spcap::packet::udp udp{packet};
-            if (__unlikely(!udp)) {
+            if (!udp) {
                 bad_packets_count++;
                 continue;
             }
 
-            if (__unlikely(packet.size() != packet.original_size())) {
+            if (packet.size() != packet.original_size()) {
                 bad_packets_count++;
                 continue;
             }
 
             std::uint32_t sequence{0};
-            if (__likely(udp.payload_size() >= sizeof(sequence))) {
+            if (udp.payload_size() >= sizeof(sequence)) {
                 sequence = *reinterpret_cast< const std::uint32_t* >(udp.payload());
             } else {
                 bad_packets_count++;

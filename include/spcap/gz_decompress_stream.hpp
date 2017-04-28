@@ -17,6 +17,8 @@ class gz_decompress_streambuffer final
     : public std::basic_streambuf< char >
 {
 private:
+    using off_type = std::basic_istream< char >::off_type;
+
     /* Size of data buffer */
     static constexpr const std::size_t buffer_size{4096};
     /* The stream to read the compressed data from */
