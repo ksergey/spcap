@@ -10,16 +10,12 @@
 #include <iostream>
 #include <iomanip>
 
-namespace spcap {
-
 #if defined( _WIN32 )
+#   define localtime_r(x, y) localtime_s(y, x)
+#   define gmtime_r(x, y) gmtime_s(y, x)
+#endif /* defined( _WIN32 ) */
 
-inline struct tm* gmtime_r(const time_t* timep, struct tm* result)
-{ return gmtime_s(result, timep); }
-inline struct tm* localtime_r(const time_t* timep, struct tm* result)
-{ return localtime_s(result, timep); }
-
-#endif
+namespace spcap {
 
 class timestamp final
 {
