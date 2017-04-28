@@ -12,6 +12,15 @@
 
 namespace spcap {
 
+#if defined( _WIN32 )
+
+inline struct tm* gmtime_r(const time_t* timep, struct tm* result)
+{ return gmtime_s(result, timep); }
+inline struct tm* localtime_r(const time_t* timep, struct tm* result)
+{ return localtime_s(result, timep); }
+
+#endif
+
 class timestamp final
 {
 private:
