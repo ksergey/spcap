@@ -71,39 +71,57 @@ public:
 
     /* Return true if packet valid */
     explicit operator bool() const noexcept
-    { return udp_ != nullptr; }
+    {
+        return udp_ != nullptr;
+    }
 
     /* Return true if packet not valid */
     bool operator!() const noexcept
-    { return udp_ == nullptr; }
+    {
+        return udp_ == nullptr;
+    }
 
     /* Return source address */
     std::uint32_t src_ip() const noexcept
-    { return ip_->saddr; }
+    {
+        return ip_->saddr;
+    }
 
     /* Return source port */
     std::uint16_t src_port() const noexcept
-    { return be_to_host(udp_->sport); }
+    {
+        return be_to_host(udp_->sport);
+    }
 
     /* Return destination address */
     std::uint32_t dst_ip() const noexcept
-    { return ip_->daddr; }
+    {
+        return ip_->daddr;
+    }
 
     /* Return destination port */
     std::uint16_t dst_port() const noexcept
-    { return be_to_host(udp_->dport); }
+    {
+        return be_to_host(udp_->dport);
+    }
 
     /* Return UDP packet capturing time */
     std::uint64_t timestamp() const noexcept
-    { return timestamp_; }
+    {
+        return timestamp_;
+    }
 
     /* Return UDP packet payload */
     const char* payload() const noexcept
-    { return payload_; }
+    {
+        return payload_;
+    }
 
     /* Return UDP packet payload size */
-    const std::size_t payload_size() const noexcept
-    { return payload_size_; }
+    std::size_t payload_size() const noexcept
+    {
+        return payload_size_;
+    }
 };
 
 } /* namespace packet */

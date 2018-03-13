@@ -20,7 +20,7 @@ namespace spcap {
 class timestamp final
 {
 private:
-    struct tm tm_{0, 0};
+    struct tm tm_{};
     unsigned nsecs_{0};
 
 public:

@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.0)
 project(spcap)
 
 # Options
-option(BUILD_EXAMPLES "Build library examples" ON)
+option(spcap_BUILD_EXAMPLES "Build library examples" ON)
 
 # LZMA required for decoding compressed streams
 find_package(LibLZMA REQUIRED)
@@ -21,9 +21,6 @@ target_compile_features(spcap INTERFACE cxx_std_14)
 
 add_library(ksergey::spcap ALIAS spcap)
 
-if (BUILD_EXAMPLES)
-    message(STATUS "spcap: build examples (yes)")
+if (spcap_BUILD_EXAMPLES)
     add_subdirectory(examples)
-else()
-    message(STATUS "spcap: build examples (no)")
 endif()
