@@ -19,6 +19,8 @@ target_include_directories(spcap INTERFACE SYSTEM ${LIBLZMA_INCLUDE_DIRS} SYSTEM
 target_link_libraries(spcap INTERFACE ${LIBLZMA_LIBRARIES} ${ZLIB_LIBRARIES})
 target_compile_features(spcap INTERFACE cxx_std_14)
 
+add_library(ksergey::spcap ALIAS spcap)
+
 if (BUILD_EXAMPLES)
     message(STATUS "spcap: build examples (yes)")
     add_subdirectory(examples)
