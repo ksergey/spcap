@@ -14,7 +14,7 @@
 
 namespace spcap {
 
-/* File reader */
+/// Simple input file reader interface
 class input_file final
 {
 private:
@@ -42,7 +42,7 @@ public:
         }
     }
 
-    ~input_file()
+    virtual ~input_file()
     {
         if (decoded_stream_ != &raw_stream_) {
             delete decoded_stream_;
@@ -50,16 +50,24 @@ public:
     }
 
     bool eof() const noexcept
-    { return decoded_stream_->eof(); }
+    {
+        return decoded_stream_->eof();
+    }
 
     explicit operator bool() const noexcept
-    { return decoded_stream_->operator bool(); }
+    {
+        return decoded_stream_->operator bool();
+    }
 
     bool operator!() const noexcept
-    { return decoded_stream_->operator!(); }
+    {
+        return decoded_stream_->operator!();
+    }
 
     std::size_t read(void* s, std::size_t count)
-    { return decoded_stream_->read(reinterpret_cast< char* >(s), count).gcount(); }
+    {
+        return decoded_stream_->read(reinterpret_cast< char* >(s), count).gcount();
+    }
 };
 
 } /* namespace spcap */

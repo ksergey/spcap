@@ -9,6 +9,7 @@
 
 namespace spcap {
 
+/// Raw PCAP packet
 class raw_packet
 {
 private:
@@ -18,41 +19,52 @@ private:
     std::size_t original_size_{0};
 
 public:
-    /* Construct non valid packet */
+    /// Construct non valid packet
     raw_packet() = default;
 
-    /* Construct packet */
-    raw_packet(std::uint64_t timestamp, const char* data, std::size_t size,
-            std::size_t original_size)
+    /// Construct packet
+    raw_packet(std::uint64_t timestamp, const char* data, std::size_t size, std::size_t original_size)
         : timestamp_(timestamp)
         , data_(data)
         , size_(size)
         , original_size_(original_size)
     {}
 
-    /* Return true if packet is valid */
+    /// Return true if packet is valid
     explicit operator bool() const noexcept
-    { return data_ != nullptr; }
+    {
+        return data_ != nullptr;
+    }
 
-    /* Return true if packet is not valid */
+    /// Return true if packet is not valid
     bool operator!() const noexcept
-    { return data_ == nullptr; }
+    {
+        return data_ == nullptr;
+    }
 
-    /* Return packet receiving time */
+    /// Return packet receiving time
     std::uint64_t timestamp() const noexcept
-    { return timestamp_; }
+    {
+        return timestamp_;
+    }
 
-    /* Return packet data */
+    /// Return packet data
     const char* data() const noexcept
-    { return data_; }
+    {
+        return data_;
+    }
 
-    /* Return packet size */
+    /// Return packet size
     std::size_t size() const noexcept
-    { return size_; }
+    {
+        return size_;
+    }
 
-    /* Return packet original size */
+    /// Return packet original size
     std::size_t original_size() const noexcept
-    { return original_size_; }
+    {
+        return original_size_;
+    }
 };
 
 } /* namespace spcap */

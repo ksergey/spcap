@@ -38,10 +38,14 @@ public:
     }
 
     const struct tm& tm() const noexcept
-    { return tm_; }
+    {
+        return tm_;
+    }
 
     unsigned nsecs() const noexcept
-    { return nsecs_; }
+    {
+        return nsecs_;
+    }
 };
 
 inline std::ostream& operator<<(std::ostream& os, const timestamp& t)

@@ -19,7 +19,9 @@ inline gz_decompress_streambuffer::gz_decompress_streambuffer(std::basic_istream
 }
 
 inline gz_decompress_streambuffer::~gz_decompress_streambuffer()
-{ inflateEnd(&z_stream_); }
+{
+    inflateEnd(&z_stream_);
+}
 
 inline gz_decompress_streambuffer::int_type gz_decompress_streambuffer::underflow()
 {

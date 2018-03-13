@@ -12,7 +12,7 @@
 
 namespace spcap {
 
-/* Packet file reader */
+/// Packet file reader
 class file
 {
 private:
@@ -32,24 +32,31 @@ private:
     std::vector< char > buffer_;
 
 public:
+    /// Open file
     explicit file(const std::string& path)
         : path_(path)
         , input_(path)
-    { read_header(); }
+    {
+        read_header();
+    }
 
-    /* Return file path */
+    /// @return File path
     const std::string& path() const
-    { return path_; }
+    {
+        return path_;
+    }
 
-    /* Return true if timestamp will be scaled to nanoseconds */
+    /// @return True if timestamp will be scaled to nanoseconds
     bool upscale_timestamps() const
-    { return upscale_precision_; }
+    {
+        return upscale_precision_;
+    }
 
-    /* Return true if end of file reached */
+    /// @return True if reading file reached end
     bool eof() const noexcept
     { return input_.eof(); }
 
-    /* Read next packet */
+    /// Read next packet
     raw_packet next()
     {
         using namespace std::string_literals;
